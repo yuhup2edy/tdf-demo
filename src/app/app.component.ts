@@ -1,0 +1,11 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  //title = 'tdf-demo';
+  public approvers= ['Maryanne Frake','Abhijit Mukherjee','Teri Schuchman','Bill Dougherty'];
+}

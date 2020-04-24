@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <H1> Relogy Title Resource Access Request</H1>
+    <form>
+        <div class="form-group">
+            <label> Requester</label>
+            <input type="text" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label> EMail Id</label>
+            <input type="email" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label> Telephone </label>
+            <input type="tel" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <select class="custom-select">
+                <option selected>Approving manager</option>
+                <!--<option *ngfor="let approver of approvers">{{ approver }}</option>-->
+                <option>Maryanne Frake</option>
+                <option>Abhijit Mukherjee</option>
+                <option>Teri Schuchman</option>
+            </select>
+
+         </div>
+
+         <div class="mb-3">
+             <label> Name of the branch</label>
+             <div class="form-check">
+                 <input type="form-check-input" type="radio" name="main" value="main">
+                 <label class="form-check-label"> Main Branch</label>
+             </div>
+             <div class="form-check">
+                <input type="form-check-input" type="radio" name="main" value="feature">
+                <label class="form-check-label"> Feature Branch</label>
+             </div>
+            </div>
+            
+       <div class="form-check mb-3">
+           <input type="form-check-input" type="checkbox">
+           <label class="form-check-label"> Notify me when approved</label>
+       </div> 
+
+       <button class="btn btn-primary"> Submit RAR </button>
+
+    </form>
+</div>
