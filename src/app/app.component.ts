@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  //title = 'tdf-demo';
-  public approvers= ['Maryanne Frake','Abhijit Mukherjee','Teri Schuchman','Bill Dougherty'];
+  title = 'tdf-demo';
+  approvers= ['Maryanne Frake','Abhijit Mukherjee','Teri Schuchman','Bill Dougherty'];
 }
