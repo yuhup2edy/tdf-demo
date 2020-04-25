@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Rar } from './rar';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'tdf-demo';
-  approvers= ['Maryanne Frake','Abhijit Mukherjee','Teri Schuchman','Bill Dougherty'];
+  approvers= ['Maryanne Frake','Abhijit Mukherjee','Vrushali Dixit','Shane Kushin'];
+  types = ['TFS Admin','TFS Reader','TFS Contributor','TFS Build Admin','TFS Branch Delete','TFS Remove Access','Others'];
+  applications = ['iClosings','IT Portal','Vendor Management','Settlement Advantage.com','HomeBase','Homebase+','Async/MsgBus',
+                  'Title!Snap','TRUE','CORE','RPA','CORE Connect','$AFE','Others','Go2Agent','Sitefinity','Fast Tool','RPA Forms'];
+  
+  rarModel = new Rar('venkatS','TFS','TFS Contributor','$AFE','Main','1.0','KumarPav,ShrivySh','Maryanne Frake','Provide Access');
 }

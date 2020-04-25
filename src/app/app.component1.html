@@ -1,0 +1,67 @@
+<div class="container-fluid">
+    <H1> Realogy Title Group : Add Resource Access Request (RAR) </H1>
+    <form #userForm="ngForm">
+
+
+        <!-- use ngModelGroup directive for group of form fields like address 
+            example
+            <div ngModelGroup="address">
+                <address line 1 with ngModel and name>
+                <address line 2 with ngModel and name>
+                <individual rows for city, state and zip with corresponding ngModel and names>        
+            </div>
+        -->
+        {{userForm.value | json}}
+        <div class="form-group">
+            <label> Requester</label>
+            <input type="text" class="form-control" name = "requesterName" ngModel>
+        </div>
+
+        <div class="form-group">
+            <label> EMail Id</label>
+            <input type="email" class="form-control" name = "emailId" ngModel>
+        </div>
+
+        <div class="form-group">
+            <label> Telephone </label>
+            <input type="tel" class="form-control" name = "mobileNumber" ngModel>
+        </div>
+
+        <div class="form-group">
+            <select class="custom-select" name="approvingManager" ngModel>
+                <option selected>Approving manager</option>
+                <option *ngFor="let approver of approvers">{{ approver }}</option>
+                <!--<option>Maryanne Frake</option>
+                <option>Abhijit Mukherjee</option>
+                <option>Teri Schuchman</option>-->
+            </select>
+
+         </div>
+
+         <div class="mb-3">
+             <label> Name of the branch</label>
+             <div class="form-check">
+                 <input type="form-check-input" type="radio" name="branchName" ngModel value="Main_Branch">
+                 <label class="form-check-label"> Main Branch</label>
+             </div>
+             <div class="form-check">
+                <input type="form-check-input" type="radio" name="branchName" ngModel value="Feature_Branch">
+                <label class="form-check-label"> Feature Branch</label>
+             </div>
+            </div>
+            
+       <div class="form-check mb-3">
+           <input type="form-check-input" type="checkbox" name="notifyMe" ngModel>
+           <label class="form-check-label"> Notify me when approved</label>
+       </div> 
+
+       <div class="form-check">
+        <label class="form-check-label"> Comments</label>
+        <input type="textarea" class="form-control" name="commentsField" ngModel>
+    </div> 
+
+
+       <button class="btn btn-primary"> Submit RAR </button>
+
+    </form>
+</div>
