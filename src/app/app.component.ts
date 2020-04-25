@@ -13,5 +13,5 @@ export class AppComponent {
   applications = ['iClosings','IT Portal','Vendor Management','Settlement Advantage.com','HomeBase','Homebase+','Async/MsgBus',
                   'Title!Snap','TRUE','CORE','RPA','CORE Connect','$AFE','Others','Go2Agent','Sitefinity','Fast Tool','RPA Forms'];
   
-  rarModel = new Rar('venkatS','TFS','TFS Contributor','$AFE','Main','1.0','KumarPav,ShrivySh','Maryanne Frake','Provide Access');
+  rarModel = new Rar('','TFS','TFS Contributor',1234567890,'$AFE','Main','1.0','KumarPav,ShrivySh','Maryanne Frake','Provide Access');
 }
