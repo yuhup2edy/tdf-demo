@@ -1,7 +1,8 @@
 <div class="container-fluid">
     <H1> Realogy Title Group : Add Resource Access Request (RAR) </H1>
     <form #userForm="ngForm">
-
+    
+    <!--     {{userForm.form.valid}} - this helps with overall form validation -->
 
 <!--         {{userForm.value | json}}
         <hr />
@@ -89,10 +90,19 @@
         
         <div class="form-group">
             <label class="form-check-label"> Approving Manager *</label>
-            <select class="custom-select" name="approvingManager" [(ngModel)]="rarModel.approvingManager">
+            <select class="custom-select" #approvingManager="ngModel"  name="approvingManager" 
+                   [(ngModel)]="rarModel.approvingManager"
+                   [class.is-invalid]="approverHasError && approvingManager.touched" 
+                   (blue)="validateApprover(approvingManager.value)" (change)="validateApprover(approvingManager.value)" >
+                   <!-- remember value prefix is the template reference variable -->
+                <!--<option selected value="">Select from below </option> -->
+                <!-- validation will pass only when val = blank and blanks passsed from service -->
+                <option selected value="default">Select from below </option>
                 <option *ngFor="let approver of approvers">{{ approver }}</option>
             </select>
-         </div>
+            <small class="text-danger" [class.d-none]="!approverHasError || approvingManager.untouched"> Select Valid approver</small>
+            <!--                                       important place for flag ; remove required fr                   -->
+        </div>
 
     
          <div class="form-check">
@@ -100,8 +110,11 @@
             <input type="text" class="form-control" name="commentsSection" [(ngModel)]="rarModel.commentsSection">
         </div> 
 
-       
-       <button class="btn btn-primary"> Submit RAR </button>
+       <br> 
+       <button [disabled]="userForm.form.invalid || approverHasError" class="btn btn-primary"> Submit RAR </button>
+       &nbsp;
+       <!-- add property binding to disabled property if the form has errors -->
+       <!-- when you have custom validation it is better to also add that flag to the disable property-->
        <button class="btn btn-primary"> Reset Form </button>
 
 
