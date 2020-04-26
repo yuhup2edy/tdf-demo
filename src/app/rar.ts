@@ -3,6 +3,7 @@ export class Rar {
         public requestedBy : string,
         public repositoryType : string,
         public requestType : string,
+        public needBy : Date,
         public phoneNum : number,
         public applicationName : string,
         public branchName : string,

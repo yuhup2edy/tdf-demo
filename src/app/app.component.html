@@ -12,11 +12,12 @@
             <input type="text" #reqBy="ngModel" required class="form-control" name = "requestedBy" [(ngModel)]="rarModel.requestedBy"
                     [class.is-invalid]="reqBy.invalid && reqBy.touched">
         </div>
+        <small class="text-danger" [class.d-none]="reqBy.valid || reqBy.untouched">Name is a required field</small>
         <!-- in the class = form control, we can also add the is-invalid class apply but it does not do it conditionally. the syntax for 
              conditional appliction is [class.is-invalid] = tempate variable.property-->
 
-       <!-- {{reqBy.className}} 
-        
+       <!--  {{reqBy.className}} (actual syntax; remember to unbind the ngModel if you want to follow this approach 
+       
         above syntax relies on the template variables's properties while the below syntax relies 
             on binding to the ngModel properties to return true or false  
        {{reqBy.touched}}
@@ -42,10 +43,24 @@
         </div>
 
         <div class="form-group">
+            <label>Need by* </label>
+            <input type=date #needBy="ngModel" required name="needBy" class="form-control"  [(ngModel)]="rarModel.needBy" 
+                    [class.is-invalid]="needBy.invalid && needBy.touched">
+        </div>
+
+        <div class="form-group">
             <label>Enter Phone Number </label>
-            <input type="text" #phoneNum="ngModel"  pattern = "^\d{10$}" class="form-control" name = "phoneNum" [(ngModel)]="rarModel.phoneNum"
+            
+            <input type="tel" #phoneNum="ngModel" pattern = "^\d{10}$" required class="form-control" name = "phoneNum" [(ngModel)]="rarModel.phoneNum"
                     [class.is-invalid]="phoneNum.invalid && phoneNum.touched">
                     <!-- patten is for 10 digits-->
+                    
+                <!--<small class="text-danger" [class.d-none]="phoneNum.valid || phoneNum.untouched">Phone Number is a required field & must be 10 digits</small>-->
+
+                <div *ngIf = "phoneNum.errors && (phoneNum.invalid || phoneNum.touched)">
+                    <small class="text-danger" *ngIf="phoneNum.errors.required"> Phone Number is a required field </small>
+                    <small class="text-danger" *ngIf="phoneNum.errors.pattern"> Phone Number must be 10 digits</small>
+                </div>
         </div>
 
         <div class="form-group">
