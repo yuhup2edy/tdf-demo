@@ -11,13 +11,19 @@ export class AppComponent {
   title = 'tdf-demo';
   approverHasError = true;
   dateHasError = true;
+  dateInPast = true;
   
   approvers= ['Maryanne Frake','Abhijit Mukherjee','Vrushali Dixit','Shane Kushin'];
   types = ['TFS Admin','TFS Reader','TFS Contributor','TFS Build Admin','TFS Branch Delete','TFS Remove Access','Others'];
   applications = ['iClosings','IT Portal','Vendor Management','Settlement Advantage.com','HomeBase','Homebase+','Async/MsgBus',
                   'Title!Snap','TRUE','CORE','RPA','CORE Connect','$AFE','Others','Go2Agent','Sitefinity','Fast Tool','RPA Forms'];
   
-  mydate = new Date('05/01/2020');
+  //mymonth = new Date().getMonth;
+  //mydate = new Date().getDate;
+  //myyear = new Date().getFullYear;
+
+  mydate =new Date();
+
   //console.log(mydate.substring(1,3));
   //d1 = new Date('01/01/0001').getMonth ;
   //d2 = new Date().getDay;
@@ -25,7 +31,7 @@ export class AppComponent {
   //d1 = new Date();
   //this.mydate = this.datePipe.transform(this.mydate, 'yyyy-MM-dd');
   
-  rarModel = new Rar('','TFS','TFS Contributor',this.mydate,1234567890,'$AFE','Main','1.0','KumarPav,ShrivySh','default','Provide Access');
+  rarModel = new Rar('venkatS','TFS','TFS Contributor',this.mydate,1234567890,'$AFE','Main','1.0','KumarPav,ShrivySh','default','Provide Access');
 
 
   validateApprover(value)
@@ -40,19 +46,21 @@ export class AppComponent {
     }
   }
 
-  /* validateNeedBy(value)
+  validateNeedBy(value)
   {
-   
+    let currentDate = new Date();
+    let needByDate  = new Date(value);
     
-    if (this.d1 - this.d2 < 2)
-    {
-      this.dateHasError = true;
-    } 
-    else
-    {
-      this.dateHasError = false;
-    }
-  } */
+    //var diff = Math.abs(needByDate.valueOf() - currentDate.valueOf());
+    var diff = Math.round(needByDate.valueOf() - currentDate.valueOf());
+    var diffDays = Math.ceil(diff / (1000 * 3600 * 24)); 
+    //console.log(diffDays);
+
+    diffDays < 2  ? this.dateHasError = true : this.dateHasError = false;
+
+    diffDays < 0 ? this.dateInPast = true : this.dateInPast = false;
+    
+  }
 
   onSubmit()
   {

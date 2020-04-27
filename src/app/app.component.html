@@ -46,13 +46,12 @@
         <div class="form-group">
             <label>Need by* </label>
             <input type=date #needBy="ngModel" required name="needBy" class="form-control"  [(ngModel)]="rarModel.needBy" 
-                    [class.is-invalid]="needBy.invalid && needBy.touched"> 
-        </div>
-        <!--(blur)="validateNeedBy(needBy.value)" (change)="validateNeedBy(needBy.value)" 
-                   
-        {{d2}}   <br> {{needBy.value}}
-
-        -->
+                    [class.is-invalid]="dateHasError && needBy.touched"
+                    (blur)="validateNeedBy(needBy.value)" (change)="validateNeedBy(needBy.value)"> 
+                    <small class="text-danger" [class.d-none]="!dateInPast || needBy.untouched"> Can't process dates in the past; </small>        
+                    <small class="text-danger" [class.d-none]="!dateHasError || needBy.untouched"> Need by must at least be 2 days from today</small>        
+        </div>                       
+        
 
         <div class="form-group">
             <label>Enter Phone Number </label>
@@ -116,7 +115,7 @@
         </div> 
 
        <br> 
-       <button [disabled]="userForm.form.invalid || approverHasError" class="btn btn-primary"> Submit RAR </button>
+       <button [disabled]="userForm.form.invalid || approverHasError || dateHasError" class="btn btn-primary"> Submit RAR </button>
        &nbsp;
        <!-- add property binding to disabled property if the form has errors -->
        <!-- when you have custom validation it is better to also add that flag to the disable property-->
