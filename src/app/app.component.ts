@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Rar } from './rar';
 import { getLocaleDateFormat } from '@angular/common';
+import { RarserviceService } from './rarservice.service';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,8 @@ export class AppComponent {
   approverHasError = true;
   dateHasError = true;
   dateInPast = true;
+
+  constructor(private _rarService : RarserviceService){}
   
   approvers= ['Maryanne Frake','Abhijit Mukherjee','Vrushali Dixit','Shane Kushin'];
   types = ['TFS Admin','TFS Reader','TFS Contributor','TFS Build Admin','TFS Branch Delete','TFS Remove Access','Others'];
@@ -31,9 +34,11 @@ export class AppComponent {
   //d1 = new Date();
   //this.mydate = this.datePipe.transform(this.mydate, 'yyyy-MM-dd');
   
+  
+
   rarModel = new Rar('venkatS','TFS','TFS Contributor',this.mydate,1234567890,'$AFE','Main','1.0','KumarPav,ShrivySh','default','Provide Access');
 
-
+  
   validateApprover(value)
   {
     if (value === 'default')
@@ -64,7 +69,12 @@ export class AppComponent {
 
   onSubmit()
   {
-    console.log(this.rarModel);
+   // console.log(this.rarModel);
     //to log to console use the class constructor instance
+    this._rarService.submitRar(this.rarModel)
+        .subscribe(
+          data => console.log('Success !!', data),
+          error => console.log('Error !', error)
+        );
   }
 }
