@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <H1> Realogy Title Group : Add Resource Access Request (RAR) </H1>
-    <form #userForm="ngForm">
+    <form #userForm="ngForm" (submit)="onSubmit()" novalidate>
     
     <!--     {{userForm.form.valid}} - this helps with overall form validation -->
 
@@ -46,8 +46,13 @@
         <div class="form-group">
             <label>Need by* </label>
             <input type=date #needBy="ngModel" required name="needBy" class="form-control"  [(ngModel)]="rarModel.needBy" 
-                    [class.is-invalid]="needBy.invalid && needBy.touched">
+                    [class.is-invalid]="needBy.invalid && needBy.touched"> 
         </div>
+        <!--(blur)="validateNeedBy(needBy.value)" (change)="validateNeedBy(needBy.value)" 
+                   
+        {{d2}}   <br> {{needBy.value}}
+
+        -->
 
         <div class="form-group">
             <label>Enter Phone Number </label>
