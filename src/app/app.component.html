@@ -13,7 +13,7 @@
             <input type="text" #reqBy="ngModel" required class="form-control" name = "requestedBy" [(ngModel)]="rarModel.requestedBy"
                     [class.is-invalid]="reqBy.invalid && reqBy.touched">
         </div>
-        <small class="text-danger" [class.d-none]="reqBy.valid || reqBy.untouched">Name is a required field</small>
+        <small class="text-danger" [class.d-none]="reqBy.valid || reqBy.untouched">Need a valid requester id</small>
         <!-- in the class = form control, we can also add the is-invalid class apply but it does not do it conditionally. the syntax for 
              conditional appliction is [class.is-invalid] = tempate variable.property-->
 
@@ -115,7 +115,7 @@
         </div> 
 
        <br> 
-       <button [disabled]="userForm.form.invalid || approverHasError || dateHasError" class="btn btn-primary"> Submit RAR </button>
+       <button [disabled]="userForm.form.invalid || approverHasError || dateHasError || dateInPast" class="btn btn-primary"> Submit RAR </button>
        &nbsp;
        <!-- add property binding to disabled property if the form has errors -->
        <!-- when you have custom validation it is better to also add that flag to the disable property-->
