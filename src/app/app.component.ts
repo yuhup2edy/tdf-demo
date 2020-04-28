@@ -78,5 +78,6 @@ export class AppComponent {
           data => console.log('Success !!', data),
           error => console.log('Error !', error)
         );
+  //console.log(data.message);      
   }
 }
