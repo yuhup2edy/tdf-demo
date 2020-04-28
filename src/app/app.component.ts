@@ -13,12 +13,13 @@ export class AppComponent {
   approverHasError = true;
   dateHasError = true;
   dateInPast = true;
+  submittedForm = false;
 
   constructor(private _rarService : RarserviceService){}
   
   approvers= ['Maryanne Frake','Abhijit Mukherjee','Vrushali Dixit','Shane Kushin'];
   types = ['TFS Admin','TFS Reader','TFS Contributor','TFS Build Admin','TFS Branch Delete','TFS Remove Access','Others'];
-  applications = ['iClosings','IT Portal','Vendor Management','Settlement Advantage.com','HomeBase','Homebase+','Async/MsgBus',
+  applications = ['iClosings','KLO Group','IT Portal','Vendor Management','Settlement Advantage.com','HomeBase','Homebase+','Async/MsgBus',
                   'Title!Snap','TRUE','CORE','RPA','CORE Connect','$AFE','Others','Go2Agent','Sitefinity','Fast Tool','RPA Forms'];
   
   //mymonth = new Date().getMonth;
@@ -69,6 +70,7 @@ export class AppComponent {
 
   onSubmit()
   {
+    this.submittedForm = true;
    // console.log(this.rarModel);
     //to log to console use the class constructor instance
     this._rarService.submitRar(this.rarModel)
