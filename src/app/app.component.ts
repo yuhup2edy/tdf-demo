@@ -14,6 +14,7 @@ export class AppComponent {
   dateHasError = true;
   dateInPast = true;
   submittedForm = false;
+  errorMessage = '';
 
   constructor(private _rarService : RarserviceService){}
   
@@ -75,9 +76,9 @@ export class AppComponent {
     //to log to console use the class constructor instance
     this._rarService.submitRar(this.rarModel)
         .subscribe(
-          data => console.log('Success !!', data),
-          error => console.log('Error !', error)
-        );
-  //console.log(data.message);      
+          data => console.log('Keshav Success !!', data),
+    //      error => console.log('Error !', error)
+          error => this.errorMessage = error.statusText
+         );
   }
 }
