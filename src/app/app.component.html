@@ -4,7 +4,7 @@
         {{errorMessage}}
     </div>
     <div class="alert alert-ok" *ngIf="!errorMessage">
-        <h2> We received your enrollment form, thank you</h2>
+        {{successMessage | json}}
     </div>
    <form #userForm="ngForm" *ngIf = "!submittedForm" (submit)="onSubmit()" novalidate>
   <!--  <form #userForm="ngForm" (submit)="onSubmit()" novalidate> -->
